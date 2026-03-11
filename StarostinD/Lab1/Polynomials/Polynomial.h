@@ -139,6 +139,9 @@ public:
 
 	Polynomial& operator-=(const Polynomial& other);
 
+	friend std::ostream& operator<<(std::ostream& out, const Polynomial& obj);
+	friend std::istream& operator>>(std::ostream& in, Polynomial& obj);
+
 	~Polynomial();
 };
 

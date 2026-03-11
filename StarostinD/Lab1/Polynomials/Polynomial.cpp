@@ -474,3 +474,15 @@ Polynomial::const_iterator Polynomial::begin() const { return const_iterator(hea
 
 Polynomial::const_iterator Polynomial::end() const { return const_iterator(nullptr); }
 
+std::ostream& operator<<(std::ostream& out, const Polynomial& obj) {
+	out << obj.get(1);
+	return out;
+}
+
+std::istream& operator>>(std::istream& in, Polynomial& obj) {
+	std::string s;
+	getline(in, s);
+	Polynomial tmp(s);
+	obj.swap(tmp);
+	return in;
+}

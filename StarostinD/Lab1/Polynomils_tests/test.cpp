@@ -148,3 +148,14 @@ TEST(Polynomial_methods, swap) {
 	EXPECT_EQ("1.000000 + 1.000000*555", t1.get());
 	EXPECT_EQ("-1.000000 + 1.000000*444", t2.get());
 }
+
+TEST(In_and_Out, in_and_out) {
+	Polynomial t1;
+	string s("-123 + 0.1154 +145 - -874 + 123 - 0.15111");
+	istringstream in(s);
+	in >> t1;
+	EXPECT_EQ("-0.150000*x^1y^1z^1 + 1.000000*x^1y^4z^5 + 0.100000*x^1y^5z^4 + 1.000000*x^8y^7z^4", t1.get(1));
+	ostringstream out;
+	out << t1;
+	EXPECT_EQ("-0.150000*x^1y^1z^1 + 1.000000*x^1y^4z^5 + 0.100000*x^1y^5z^4 + 1.000000*x^8y^7z^4", out.str());
+}
