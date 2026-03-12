@@ -33,7 +33,7 @@ void insert_polynomial(vector<Polynomial>& storage) {
 		storage.push_back(Polynomial(input));
 	}
 	catch (std::exception e) {
-		cerr << "Error! " << e.what();
+		cerr << "Error! " << e.what() << '\n';
 		system("pause");
 		return;
 	}
@@ -175,7 +175,7 @@ void multiply_p(vector<Polynomial>& storage) {
 		}
 	}
 	catch(std::exception e) {
-		cerr << "Error! " << e.what();
+		cerr << "Error! " << e.what() << '\n';
 		return;
 	}
 }
@@ -277,6 +277,7 @@ bool process_input(Options opt, vector<Polynomial>& storage) {
 		system("pause");
 		break;
 	case Exit:
+		system("cls");
 		return 1;
 		break;
 	default:
