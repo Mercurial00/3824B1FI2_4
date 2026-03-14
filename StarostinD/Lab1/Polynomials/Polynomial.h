@@ -111,9 +111,6 @@ public:
 
 	const_iterator end() const;
 
-	//format: 0 - set of degrees, 1 - mathematical form 
-	//void insert(const std::string& src, bool format=0);
-
 	void swap(Polynomial& other);
 
 	void clear();

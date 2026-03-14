@@ -100,9 +100,6 @@ Polynomial::Monomial& Polynomial::Monomial::operator-=(const Monomial& other) {
 	return *this;
 }
 
-//Polynomial::Monomial::operator std::string() const {
-//	return degs;
-//}
 
 bool Polynomial::Monomial::operator<(const Monomial& other) const {
 	if (degs == other.degs) {
@@ -234,7 +231,6 @@ void Polynomial::clear() {
 std::string Polynomial::get(bool format) const {
 	std::string P = "";
 	if(format){
-		//auto curr = begin();
 		for (const auto& e : *this) {
 			int deg = e.degs;
 			if (!P.empty() && e.coef < 0) {
