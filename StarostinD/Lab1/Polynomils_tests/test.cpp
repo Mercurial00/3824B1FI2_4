@@ -132,8 +132,8 @@ TEST(Polynomial_methods, clear) {
 	auto end_it = static_cast<const Polynomial&>(t).end();
 	EXPECT_EQ(beg_it, end_it);
 	
-	t += (Polynomial)"111";
-	EXPECT_EQ("1.000000*111", t.get()); //Проверка того, что объект всё ещё можно использовать
+	EXPECT_NO_THROW(t += (Polynomial)"111"); //Проверка того, что объект всё ещё можно использовать
+	EXPECT_EQ("1.000000*111", t.get()); 
 }
 
 TEST(Polynomial_methods, swap) {
