@@ -346,6 +346,10 @@ void erase(vector<Polynomial>& storage) {
 
 void Tinsert(vector<string>& keys, vector<Polynomial>& storage) {
 	system("cls");
+	if (storage.size() == 0) {
+		cout << "No polynomials in list.\n";
+		return;
+	}
 	int choice;
 	cout << "You want to see all polynomials? 1. Yes 2. No\n";
 	cin >> choice;
@@ -362,15 +366,23 @@ void Tinsert(vector<string>& keys, vector<Polynomial>& storage) {
 		return;
 	}
 
+	bool try_again = true;
 	string key;
-	cout << "You want to enter your own key?  1. Yes 2. No\n";
-	cin >> choice;
-	if (choice == 1) {
-		cin.ignore((numeric_limits<streamsize>::max)(), '\n');
-		getline(cin, key);
-	}
-	else {
-		key = storage[poly].get();
+	while (try_again) {
+		try_again = false;
+		cout << "You want to enter your own key?  1. Yes 2. No\n";
+		cin >> choice;
+		if (choice == 1) {
+			cin.ignore((numeric_limits<streamsize>::max)(), '\n');
+			getline(cin, key);
+		}
+		else {
+			key = storage[poly].get();
+		}
+		if (HT.find(key) != nullptr) {
+			cout << "This key already exists in the table. Select another key\n";
+			try_again = true;
+		}
 	}
 	Polynomial& t = storage[poly];
 	keys.push_back(key);
