@@ -8,6 +8,7 @@
 class Polynomial {
 public:
 	class const_iterator;
+
 private:
 	class iterator;
 	struct Monomial;
@@ -66,6 +67,7 @@ private:
 	void push_back(const Monomial& src);
 
 	class iterator {
+	private:
 		friend Polynomial;
 		Node* ptr;
 	public:
