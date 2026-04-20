@@ -66,7 +66,6 @@ private:
 	void push_back(const Monomial& src);
 
 	class iterator {
-	private:
 		friend Polynomial;
 		Node* ptr;
 	public:
