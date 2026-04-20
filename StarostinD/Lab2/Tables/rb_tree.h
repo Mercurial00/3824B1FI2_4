@@ -351,11 +351,11 @@ public:
 		Node* search_res = find(root, key);
 		this->findOperationsCnt += 4;
 		if (search_res == NIL) {
-			this->file << this->tableType << "find: " << this->findOperationsCnt - t << '\n';
+			this->file << this->tableType << " find: " << this->findOperationsCnt - t << '\n';
 			return nullptr;
 		}
 		this->findOperationsCnt += 2;
-		this->file << this->tableType<< "find: " << this->findOperationsCnt - t << '\n';
+		this->file << this->tableType<< " find: " << this->findOperationsCnt - t << '\n';
 		return &search_res->data;
 	}
 
@@ -366,7 +366,7 @@ public:
 
 		int f = this->findOperationsCnt;
 		Node* parent = findParent(root, key);
-		this->file << this->tableType << "find: " << this->findOperationsCnt - f << '\n';
+		this->file << this->tableType << " find: " << this->findOperationsCnt - f << '\n';
 		t -= this->findOperationsCnt - f;
 
 		this->insertOperationsCnt += 4;
@@ -380,7 +380,7 @@ public:
 			this->insertOperationsCnt += 2;
 			if (key == parent->key) {
 				parent->data = data;
-				this->file << this->tableType << "insert: " << this->insertOperationsCnt - t << '\n';
+				this->file << this->tableType << " insert: " << this->insertOperationsCnt - t << '\n';
 				return;
 			}
 
@@ -399,7 +399,7 @@ public:
 		this->insertOperationsCnt += 1;
 		insertFixup(newNode);
 
-		this->file << this->tableType << "insert: " << this->insertOperationsCnt - t << '\n';
+		this->file << this->tableType << " insert: " << this->insertOperationsCnt - t << '\n';
 	}
 
 	void erase(const std::string& key) override {
@@ -407,14 +407,14 @@ public:
 
 		int f = this->findOperationsCnt;
 		Node* x = find(root, key); // удаляемый узел
-		this->file << this->tableType << "find: " << this->findOperationsCnt - f << '\n';
+		this->file << this->tableType << " find: " << this->findOperationsCnt - f << '\n';
 
 		t -= this->findOperationsCnt - f;
 		this->eraseOperationsCnt += 4;
 		f = 0;
 
 		if (x == NIL) {
-			this->file << this->tableType << "erase: " << this->eraseOperationsCnt - t << '\n';
+			this->file << this->tableType << " erase: " << this->eraseOperationsCnt - t << '\n';
 			return;
 		}
 
@@ -470,7 +470,7 @@ public:
 		delete x;
 
 		this->eraseOperationsCnt += f;
-		this->file << this->tableType << "erase: " << this->eraseOperationsCnt - t  << '\n';
+		this->file << this->tableType << " erase: " << this->eraseOperationsCnt - t  << '\n';
 	}
 
 	bool isValidRBTree() {

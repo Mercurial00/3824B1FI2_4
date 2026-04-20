@@ -27,31 +27,31 @@ public:
 			if (table[i].key == key) {
 				this->findOperationsCnt += 3;
 
-				this->file << this->tableType << "find: " << this->findOperationsCnt - t << '\n';
+				this->file << this->tableType << " find: " << this->findOperationsCnt - t << '\n';
 				return &table[i].data;
 			}
 			this->findOperationsCnt += 2;
 		}
-		this->file << this->tableType << "find: " << this->findOperationsCnt - t << '\n';
+		this->file << this->tableType << " find: " << this->findOperationsCnt - t << '\n';
 		return nullptr;
 	}
 
 	void insert(const std::string &key, const T &data) override {
 		int t = this->findOperationsCnt, k = this->insertOperationsCnt;
 		T* elem = find(key);
-		this->file << this->tableType << "find: " << this->findOperationsCnt - t << '\n';
+		this->file << this->tableType << " find: " << this->findOperationsCnt - t << '\n';
 		this->insertOperationsCnt += 3 + this->findOperationsCnt - t;
 		
 		if (elem) {
 			*elem = data;
 			this->insertOperationsCnt += 2;
 
-			this->file << this->tableType << "insert: " << this->insertOperationsCnt - k << '\n';
+			this->file << this->tableType << " insert: " << this->insertOperationsCnt - k << '\n';
 			return;
 		}
 		table.emplace_back(key, data);
 		this->insertOperationsCnt += 3;
-		this->file << this->tableType << "insert: " << this->insertOperationsCnt - k << '\n';
+		this->file << this->tableType << " insert: " << this->insertOperationsCnt - k << '\n';
 		return;
 	}
 
@@ -66,12 +66,12 @@ public:
 				table.pop_back();
 				this->eraseOperationsCnt += 9;
 
-				this->file << this->tableType << "erase: " << this->eraseOperationsCnt - t << '\n';
+				this->file << this->tableType << " erase: " << this->eraseOperationsCnt - t << '\n';
 				return;
 			}
 			this->eraseOperationsCnt += 2;
 		}
-		this->file << this->tableType << "erase: " << this->eraseOperationsCnt - t << '\n';
+		this->file << this->tableType << " erase: " << this->eraseOperationsCnt - t << '\n';
 	}
 
 	bool extract(const std::string &key, T &out) override {
@@ -87,13 +87,13 @@ public:
 				table.pop_back();
 				this->extractOperationsCnt += 12;
 
-				this->file << this->tableType << "extract: " << this->extractOperationsCnt - t << '\n';
+				this->file << this->tableType << " extract: " << this->extractOperationsCnt - t << '\n';
 				return true;
 			}
 			this->extractOperationsCnt += 2;
 		}
 
-		this->file << this->tableType << "extract: " << this->extractOperationsCnt - t << '\n';
+		this->file << this->tableType << " extract: " << this->extractOperationsCnt - t << '\n';
 		return false;
 	}
 };

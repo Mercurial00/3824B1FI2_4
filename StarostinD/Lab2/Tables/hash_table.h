@@ -68,13 +68,13 @@ public:
 			if (nodes[pos].key == key) {
 				this->findOperationsCnt += 3;
 
-				this->file << this->tableType << "find: " << this->findOperationsCnt - t << '\n';
+				this->file << this->tableType << " find: " << this->findOperationsCnt - t << '\n';
 				return &nodes[pos].data;
 			}
 			pos = nodes[pos].next;
 			this->findOperationsCnt += 4;
 		}
-		this->file << this->tableType << "find: " << this->findOperationsCnt - t << '\n';
+		this->file << this->tableType << " find: " << this->findOperationsCnt - t << '\n';
 		return nullptr;
 	}
 
@@ -88,7 +88,7 @@ public:
 			nodes[pos].data = data;
 			this->insertOperationsCnt += 3;
 
-			this->file << this->tableType << "insert: " << this->insertOperationsCnt - t << '\n';
+			this->file << this->tableType << " insert: " << this->insertOperationsCnt - t << '\n';
 			return;
 		}
 
@@ -127,7 +127,7 @@ public:
 
 		++size;
 		this->insertOperationsCnt += 1;
-		this->file << this->tableType << "insert: " << this->insertOperationsCnt - t << '\n';
+		this->file << this->tableType << " insert: " << this->insertOperationsCnt - t << '\n';
 	}
 
 	void erase(const std::string& key) override {
@@ -138,7 +138,7 @@ public:
 
 		this->eraseOperationsCnt += 7;
 		if (!isInTable(key, _hash, pos, prev, this->eraseOperationsCnt)) {
-			this->file << this->tableType << "erase: " << this->eraseOperationsCnt - t << '\n';
+			this->file << this->tableType << " erase: " << this->eraseOperationsCnt - t << '\n';
 			return;
 		}
 
@@ -154,7 +154,7 @@ public:
 		}
 		--size;
 		this->eraseOperationsCnt += 1;
-		this->file << this->tableType << "erase: " << this->eraseOperationsCnt - t << '\n';
+		this->file << this->tableType << " erase: " << this->eraseOperationsCnt - t << '\n';
 	}
 
 };
