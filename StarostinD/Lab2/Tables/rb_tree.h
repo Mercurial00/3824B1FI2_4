@@ -278,7 +278,7 @@ private:
 		this->eraseOperationsCnt += 1 + t;
 	}
 
-	void transplant(Node* u, Node* v, int& cnt) {
+	void transplant(Node* u, Node* v, size_t& cnt) {
 		cnt += 2;
 		if (u->parent == NIL) {
 			root = v;
@@ -296,7 +296,7 @@ private:
 		cnt += 3;
 	}
 
-	Node* successor(Node* x, int& cnt) {
+	Node* successor(Node* x, size_t& cnt) {
 		// deg(x) = 2;
 		x = x->right;
 		cnt += 4;
