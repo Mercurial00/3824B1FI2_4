@@ -18,10 +18,10 @@ public:
 	}
 	unordered_table(std::ofstream &file) : unordered_table(100, file) {}
 
-	T* find(const std::string &key) override {
+	T *find(const std::string &key) override {
 		int t = this->findOperationsCnt;
 		const size_t SZ = table.size();
-		this->findOperationsCnt+= 5;
+		this->findOperationsCnt += 5;
 		for (size_t i = 0; i < SZ; ++i) {
 			this->findOperationsCnt += 3;
 			if (table[i].key == key) {
